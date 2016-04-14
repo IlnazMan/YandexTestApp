@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">YandexTestApp</string>
+    <string name="albums_songs_count">%1$s albums, %2$s songs</string>
+    <string name="search">Search</string>
+</resources>

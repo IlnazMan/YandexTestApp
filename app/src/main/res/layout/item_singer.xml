@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/small"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:adjustViewBounds="true"
+        app:riv_border_color="@color/colorAccent"
+        app:riv_border_width="2dp"
+        app:riv_oval="true"
+        tools:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="18sp"
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/black"
+            tools:text="Ali Ali" />
+
+        <TextView
+            android:id="@+id/genre"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ali Ali" />
+
+        <TextView
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/songs_albums_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ali Ali" />
+
+    </LinearLayout>
+
+</LinearLayout>
