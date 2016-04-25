@@ -12,6 +12,6 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Injector.init(new NetworkModule(this));
+        Injector.init(new NetworkModule(this));//dependency inject
     }
 }

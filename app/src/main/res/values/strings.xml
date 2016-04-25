@@ -2,4 +2,6 @@
     <string name="app_name">YandexTestApp</string>
     <string name="albums_songs_count">%1$s albums, %2$s songs</string>
     <string name="search">Search</string>
+    <string name="genres_title">Genres</string>
+    <string name="link_title">Link</string>
 </resources>

@@ -39,9 +39,7 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    public void inject() {
-
-    }
+    abstract public void inject();
 
     @Nullable
     @Override

@@ -2,9 +2,11 @@ package me.hg.ilnaz.yandextestapp;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.TransitionManager;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
@@ -55,15 +57,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(BaseFragment fragment) {
-        manager.beginTransaction()
-                .replace(R.id.container, fragment)
+        FragmentTransaction transaction = manager.beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                        android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                .replace(R.id.container, fragment);
+        transaction
                 .commit();
     }
 
     public void showFragment(BaseFragment fragment) {
-        manager.beginTransaction()
-                .replace(R.id.container, fragment)
+        FragmentTransaction transaction = manager.beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                        android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                 .addToBackStack(fragment.getClass().getName())
+                .replace(R.id.container, fragment);
+        transaction
                 .commit();
     }
 

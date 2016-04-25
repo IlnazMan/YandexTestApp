@@ -115,41 +115,47 @@ public class SingersListFragment extends BaseFragment implements SwipeRefreshLay
             if (list != null && !list.isEmpty()) {
                 setSingersToAdapter(list, listFilter);
             } else {
-                loadSingers();
+                loadSingersFromCacheIfExists();
             }
         } else {
-            loadSingers();
+            loadSingersFromCacheIfExists();
         }
     }
 
-    private void loadSingers() {
+    private void loadSingersFromCacheIfExists(){
         String jsonStr = SP.get(getContext()).getString(Consts.SINGERS_CACHE, "");
         Type listType = new TypeToken<List<Singer>>() {
         }.getType();
         List<Singer> cachedSingers = new Gson().fromJson(jsonStr, listType);
         if (cachedSingers == null || cachedSingers.isEmpty()) {
-            swipeRefreshLayout.setRefreshing(true);
-            api.getArtists().subscribeOn(Schedulers.newThread())
-                    .doOnEach(notification -> getActivity().runOnUiThread(() -> swipeRefreshLayout.setRefreshing(false)))
-                    .doOnError(err -> {
-                        Log.wtf(Consts.TAG, err.getMessage());
-                        Snackbar.make(getView(), err.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
-                    })
-                    .onErrorReturn(err -> null)
-                    .doOnNext(singers -> {
-                                if (singers == null) return;
-
-                                SP.edit(getContext()).putString(Consts.SINGERS_CACHE, new Gson().toJson(singers)).apply();
-                                getActivity().runOnUiThread(() -> {
-                                    setSingersToAdapter(singers, singers);
-                                });
-                            }
-                    )
-                    .subscribe();
+            loadSingers();
         } else {
-            swipeRefreshLayout.setRefreshing(false);
             setSingersToAdapter(cachedSingers, cachedSingers);
         }
+    }
+
+    /**
+     * void loadSingers() - method for loading singers from api
+     */
+    private void loadSingers() {
+        swipeRefreshLayout.setRefreshing(true);
+        api.getArtists().subscribeOn(Schedulers.newThread())
+                .doOnEach(notification -> getActivity().runOnUiThread(() -> swipeRefreshLayout.setRefreshing(false)))
+                .doOnError(err -> {
+                    Log.wtf(Consts.TAG, err.getMessage());
+                    Snackbar.make(getView(), err.getLocalizedMessage(), Snackbar.LENGTH_SHORT).show();
+                })
+                .onErrorReturn(err -> null)
+                .doOnNext(singers -> {
+                            if (singers == null) return;
+
+                            SP.edit(getContext()).putString(Consts.SINGERS_CACHE, new Gson().toJson(singers)).apply();
+                            getActivity().runOnUiThread(() -> {
+                                setSingersToAdapter(singers, singers);
+                            });
+                        }
+                )
+                .subscribe();
     }
 
     private void setSingersToAdapter(List<Singer> singers, List<Singer> filtered) {

@@ -90,8 +90,8 @@ public class SingersAdapter extends RecyclerView.Adapter<SingersAdapter.SingerHo
             ((TextView) itemView.findViewById(R.id.songs_albums_count)).setText(String.format(context.getString(R.string.albums_songs_count), singer.getAlbums(), singer.getTracks()));
             Picasso.with(context).load(singer.getCover().get("small")
                     .toString())
-                    .placeholder(android.R.drawable.ic_menu_gallery)
-                    .error(android.R.drawable.ic_menu_gallery)
+                    .placeholder(R.drawable.place_holder)
+                    .error(R.drawable.place_holder)
                     .into(((ImageView) itemView.findViewById(R.id.small)));
         }
     }

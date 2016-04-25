@@ -22,17 +22,52 @@
 
                 <ImageView
                     android:id="@+id/big"
-                    android:scaleType="centerInside"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside" />
 
                 <TextView
-                    android:padding="10dp"
-                    android:textColor="@android:color/black"
                     android:id="@+id/desc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/content_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/genres_title"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="@dimen/title_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/content_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/link_title"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="@dimen/title_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/content_size" />
             </LinearLayout>
         </ScrollView>
     </android.support.v7.widget.CardView>
